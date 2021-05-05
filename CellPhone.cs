@@ -8,6 +8,16 @@ namespace RoboCollaboration
 {
     class CellPhone : Phone
     {
+        public CellPhone(string name, string number, string phoneType)
+            : base(name, number, phoneType)
+        {
 
+        }
+
+        public override string Dial()
+        {
+
+            return "foo";
+        }
     }
 }
