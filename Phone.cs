@@ -19,10 +19,10 @@ namespace RoboCollaboration
 
         public virtual string Dial()
         {
-            return "foo";
+            string formatNum;
+            formatNum = "(" + PhoneNumber.Substring(0, 3) + ") " + PhoneNumber.Substring(3, 3) + "-" + PhoneNumber.Substring(6, 4);
+            return $"Dialing Phone number {formatNum}";
         }
 
     }
 }
-
-
