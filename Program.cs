@@ -6,7 +6,7 @@ namespace RoboCollaboration
     {
         static void Main(string[] args)
         {
-            PopulateObjectData();
+            
 
         }
 
@@ -39,8 +39,11 @@ namespace RoboCollaboration
             }
 
         }
-        public static void PopulateObjectData()
+
+        public static Phone[] PopulateData()
         {
+            Phone[] phoneBook = new Phone[10];
+
             CreatePhoneObj("CompuTest,(303) 985-5060,1");
             CreatePhoneObj("Curtis Manufacturing,(603) 532-4123,2");
             CreatePhoneObj("Data Functions,(800) 876-2524,1");
@@ -51,6 +54,8 @@ namespace RoboCollaboration
             CreatePhoneObj("Glare-Guard,(800) 545-6254,2");
             CreatePhoneObj("Hazard Comm Specialists,(407) 783-6641,2");
             CreatePhoneObj("Komfort Support,(714) 472-4409,2");
+
+            return phoneBook;
         }
     }
 }
