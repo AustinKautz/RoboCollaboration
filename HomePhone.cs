@@ -16,7 +16,8 @@ namespace RoboCollaboration
 
         public override string Dial()
         {
-            return "foo";
+            return $"{CompanyName} is being dialed using {PhoneNumber}...";
+            //return "foo";
         }
     }
 }
