@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace RoboCollaboration
 {
@@ -6,17 +7,22 @@ namespace RoboCollaboration
     {
         static void Main(string[] args)
         {
-            
+            Phone[] hardCodedPhoneBook = PopulateData();
+
+            Phone[] userInputPhoneBook = ReceiveUserInputData();
+
+            OutputPhoneNumbers(userInputPhoneBook);
 
         }
 
+
+
         public static Phone CreatePhoneObj(string str)
         {
-            //break string into it's three components (name, number, phone type) and stores them in an array.
             string[] PhoneNumberInfo = str.Split(',');
 
-            //Searches through each character of the string with the phone number. Stores each NUMBER found in number variable.
             var holder = PhoneNumberInfo[1];
+
             string number = "";
 
             foreach (var item in holder)
@@ -27,8 +33,6 @@ namespace RoboCollaboration
                 }
             }
 
-
-            //Does the actual Phone object creation
             if (PhoneNumberInfo[2] == "1")
             {
                 return new HomePhone(PhoneNumberInfo[0], number, PhoneNumberInfo[2]);
@@ -57,6 +61,35 @@ namespace RoboCollaboration
 
 
             return phoneBook;
+        }
+
+        public static Phone[] ReceiveUserInputData()
+        {
+            Phone[] phoneBook = new Phone[10];
+
+            for (int i = 0; i < phoneBook.Length; i++)
+            {
+                Console.WriteLine("Enter Name, Number, phone type. Or Enter Q to quit.");
+                string userString = Console.ReadLine();
+                if (userString.ToLower() == "q")
+                {
+                    break;
+                }
+                phoneBook[i] = CreatePhoneObj(userString);
+            }
+
+            return phoneBook;
+        }
+
+        public static void OutputPhoneNumbers(Phone[] phoneBook)
+        {
+            foreach (var item in phoneBook)
+            {
+                if (item != null)
+                {
+                    Console.WriteLine(item.Dial());
+                }
+            }
         }
     }
 }

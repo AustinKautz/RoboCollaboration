@@ -16,7 +16,10 @@ namespace RoboCollaboration
 
         public override string Dial()
         {
-            return "foo";
+
+            return $"{CompanyName} is being dialed using ({PhoneNumber.Substring(0, 3)}) {PhoneNumber.Substring(3, 3)}-{PhoneNumber.Substring(5, 4)}...";
+
+
         }
     }
 }
