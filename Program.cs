@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace RoboCollaboration
 {
@@ -6,6 +7,14 @@ namespace RoboCollaboration
     {
         static void Main(string[] args)
         {
+            Phone[] hardCodedPhoneBook = PopulateData();
+
+            Phone[] userInputPhoneBook = ReceiveUserInputData();
+
+            OutputPhoneNumbers(userInputPhoneBook);
+
+            OutputPhoneNumbers(hardCodedPhoneBook);
+            
 
 
         }
@@ -57,6 +66,35 @@ namespace RoboCollaboration
 
 
             return phoneBook;
+        }
+
+        public static Phone[] ReceiveUserInputData()
+        {
+            Phone[] phoneBook = new Phone[10];
+
+            for (int i = 0; i < phoneBook.Length; i++)
+            {
+                Console.WriteLine("Enter Name, Number, phone type. Or Enter Q to quit.");
+                string userString = Console.ReadLine();
+                if (userString.ToLower() == "q")
+                {
+                    break;
+                }
+                phoneBook[i] = CreatePhoneObj(userString);
+            }
+
+            return phoneBook;
+        }
+
+        public static void OutputPhoneNumbers(Phone[] phoneBook)
+        {
+            foreach (var item in phoneBook)
+            {
+                if (item != null)
+                {
+                    Console.WriteLine(item.Dial());
+                }
+            }
         }
     }
 }
