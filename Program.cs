@@ -6,9 +6,8 @@ namespace RoboCollaboration
     {
         static void Main(string[] args)
         {
-            Phone[] dialingList = PopulateObjectData();
-            makeCalls(dialingList);
-            Console.ReadKey();
+
+
         }
 
         public static Phone CreatePhoneObj(string str)
@@ -28,6 +27,7 @@ namespace RoboCollaboration
                 }
             }
 
+
             //Does the actual Phone object creation
             if (PhoneNumberInfo[2] == "1")
             {
@@ -39,37 +39,24 @@ namespace RoboCollaboration
             }
 
         }
-        public static Phone[] PopulateObjectData()
+
+        public static Phone[] PopulateData()
         {
-            // Create instance data of each sub-type
-            string[] holdData = new string[10];
+            Phone[] phoneBook = new Phone[10];
 
-            holdData[0] = "CompuTest,(303) 985-5060,1";
-            holdData[1] = "Curtis Manufacturing,(603) 532-4123,2";
-            holdData[2] = "Data Functions,(800) 876-2524,1";
-            holdData[3] = "Donnay Repair,(708) 397-3330,1";
-            holdData[4] = "ErgoNomic Inc,(360) 434-3894,1";
-            holdData[5] = "ErgoSource,(800) 969-4374,1";
-            holdData[6] = "Fox Bay Industries,(800) 874-8527,2";
-            holdData[7] = "Glare-Guard,(800) 545-6254,2";
-            holdData[8] = "Hazard Comm Specialists,(407) 783-6641,2";
-            holdData[9] = "Komfort Support,(714) 472-4409,2";
+            phoneBook[0] = CreatePhoneObj("CompuTest,(303) 985 - 5060, 1");
+            phoneBook[1] = CreatePhoneObj("Curtis Manufacturing,(603) 532-4123,2");
+            phoneBook[2] = CreatePhoneObj("Data Functions,(800) 876-2524,1");
+            phoneBook[3] = CreatePhoneObj("Donnay Repair,(708) 397-3330,1");
+            phoneBook[4] = CreatePhoneObj("ErgoNomic Inc,(360) 434-3894,1");
+            phoneBook[5] = CreatePhoneObj("ErgoSource,(800) 969-4374,1");
+            phoneBook[6] = CreatePhoneObj("Fox Bay Industries,(800) 874-8527,2");
+            phoneBook[7] = CreatePhoneObj("Glare-Guard,(800) 545-6254,2");
+            phoneBook[8] = CreatePhoneObj("Hazard Comm Specialists,(407) 783-6641,2");
+            phoneBook[9] = CreatePhoneObj("Komfort Support,(714) 472-4409,2");
 
-            // Load instance data into dialingList array of type Phone
-            Phone[] dialingList = new Phone[10];
-            for(int i = 0; i <= 8; i++)
-            {
-                dialingList[i] = CreatePhoneObj(holdData[i]);
-            }
 
-            return dialingList;
-        }
-        public static void makeCalls(Phone[] dialingList)
-        {
-            for(int i = 0; i <= 8; i++)
-            {
-                Console.WriteLine(dialingList[i].Dial());
-            }
+            return phoneBook;
         }
     }
 }
